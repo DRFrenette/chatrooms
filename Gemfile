@@ -7,6 +7,7 @@ end
 
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'haml-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.2'
@@ -23,6 +24,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
+  gem 'erb2haml'
   gem 'listen', '~> 3.0.5'
   gem 'web-console', '>= 3.3.0'
 end
