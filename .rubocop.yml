@@ -3,9 +3,10 @@ AllCops:
     - Berksfile
     - recipes/basic.rb
     - attributes/*.rb
-    - config/initalizers/*.rb
+    - config/initializers/*.rb
     - config/environments/production.rb
     - db/*.rb
+    - db/migrate/*.rb
 
 Documentation:
   Enabled: false
