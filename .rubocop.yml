@@ -22,3 +22,9 @@ Metrics/AbcSize:
 
 BlockLength:
   Max: 70
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Enabled: true
+  Exclude:
+    - 'Gemfile'
