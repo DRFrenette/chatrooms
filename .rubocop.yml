@@ -1,0 +1,24 @@
+AllCops:
+  Excludes:
+    - Berksfile
+    - recipes/basic.rb
+    - attributes/*.rb
+    - config/initalizers/*.rb
+    - config/environments/production.rb
+    - db/*.rb
+
+Documentation:
+  Enabled: false
+
+# Customize rules
+Metrics/LineLength:
+  Max: 95
+
+MethodLength:
+  Max: 35
+
+Metrics/AbcSize:
+   Enabled: false
+
+BlockLength:
+  Max: 70
