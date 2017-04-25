@@ -11,12 +11,17 @@
             %a{:href => "#"}
               %i.icon-comments-alt
           %h3 Active Chatrooms
-          %ul
+          %ul.nobottommargin
             - @chatrooms.each do |chatroom|
-              %li= link_to chatroom.name, "#"
+              %li
+                = link_to chatroom.name, "#"
+                = link_to chatroom_chatroom_users_path(chatroom), method: :post do
+                  %i.icon-plus
+                = link_to chatroom_chatroom_users_path(chatroom), method: :delete do
+                  %i.icon-line-cross
       .col_one_third.col_last.topmargin
         .feature-box.fbox-center.fbox-light.fbox-plain
           .fbox-icon
             = link_to new_chatroom_path do
               %i.icon-plus
-          %h3 Active Chatrooms
+          %h3 Create a New Chatroom
