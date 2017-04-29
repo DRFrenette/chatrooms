@@ -14,7 +14,7 @@
           %ul.nobottommargin
             - @chatrooms.each do |chatroom|
               %li
-                = link_to chatroom.name, "#"
+                = link_to chatroom.name, chatroom_path(chatroom)
                 = link_to chatroom_chatroom_users_path(chatroom), method: :post do
                   %i.icon-plus
                 = link_to chatroom_chatroom_users_path(chatroom), method: :delete do

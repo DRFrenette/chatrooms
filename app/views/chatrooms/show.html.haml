@@ -1,0 +1,20 @@
+%section#content
+  .container.clearfix
+    .heading-block.center.nobottomborder.topmargin
+      %h1= @chatroom.name
+
+  .content-wrap
+    .postcontent.nobottommargin.clearfix
+      .list-group
+        - @chatroom.messages.each do |message|
+          %a.list-group-item{:href => "#"}
+            %b= message.user.name
+            (#{message.created_at.strftime('%l:%M %p')} ):
+            = message.body
+
+
+%footer#footer{style: "z-index: 100000"}
+  = simple_form_for [@chatroom, @message] do |f|
+    = f.input :body, input_html: { class: 'form-control nobottommargin' },
+      label: false, as: :string,
+      placeholder: 'Type & Hit Enter...', autofocus: true

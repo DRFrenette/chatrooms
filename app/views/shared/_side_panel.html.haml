@@ -8,6 +8,7 @@
       %h4 Your Chatrooms
       %nav.nav-tree.nobottommargin
         %ul
-          - current_user.chatrooms.each do |chatroom|
-            %li
-              = link_to chatroom.name, "javascript:void(0)"
+          - if user_signed_in?
+            - current_user.chatrooms.each do |chatroom|
+              %li
+                = link_to chatroom.name, "javascript:void(0)"

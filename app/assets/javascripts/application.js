@@ -16,3 +16,5 @@
 //= require plugins
 //
 //= require plugins/jquery.swiper
+//
+//= require_tree ./views
