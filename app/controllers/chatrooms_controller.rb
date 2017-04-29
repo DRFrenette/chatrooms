@@ -12,7 +12,7 @@ class ChatroomsController < ApplicationController
 
     if @chatroom.valid?
       @chatroom.save!
-      flash.notice = 'Chatrooms created.'
+      flash.notice = "Chatrooms created."
       redirect_to chatrooms_path
     else
       redirect_to new_chatroom_path
@@ -20,8 +20,11 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatroom = Chatroom.includes(messages: :user).find(params[:id])
+    @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @messages = @chatroom.messages.includes(:user).order(created_at: :desc).
+      limit(100).reverse
+    @unread_messages = false
   end
 
   private

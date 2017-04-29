@@ -6,7 +6,7 @@
   .content-wrap
     .postcontent.nobottommargin.clearfix
       .list-group
-        - @chatroom.messages.each do |message|
+        - @messages.each do |message|
           %a.list-group-item{:href => "#"}
             %b= message.user.name
             (#{message.created_at.strftime('%l:%M %p')} ):
