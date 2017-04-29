@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     resource :chatroom_users, only: [:create, :destroy]
     resources :messages, only: [:create]
   end
-  devise_for :users
+  devise_for :users, controllers: { sessions: "sessions" }
 end

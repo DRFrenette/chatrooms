@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     message = chatroom.messages.new(message_params)
     message.user = current_user

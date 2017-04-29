@@ -11,8 +11,10 @@
       %nav#primary-menu.dark
         %ul
           %li
-            %a{:href => "index.html"}
-              %div Home
+            - if user_signed_in?
+              = link_to "Sign Out", destroy_user_session_path, method: :delete
+            - else
+              = link_to "Sign In", new_user_session_path
         #side-panel-trigger.side-panel-trigger
           %a{:href => "#"}
             %i.icon-line-layout

@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require plugins
+//= require cable
 //
 //= require plugins/jquery.swiper
 //
 //= require_tree ./views
+//= require_tree ./channels
