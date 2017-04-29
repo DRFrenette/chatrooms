@@ -2,12 +2,7 @@ class MessagesController < ApplicationController
   def create
     message = chatroom.messages.new(message_params)
     message.user = current_user
-
-    if message.save
-      redirect_to chatroom
-    else
-      #cry
-    end
+    message.save
   end
 
   private
