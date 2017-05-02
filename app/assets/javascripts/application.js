@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require plugins
 //= require cable
+//= require notifications
 //
 //= require plugins/jquery.swiper
 //

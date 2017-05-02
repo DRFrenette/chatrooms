@@ -10,5 +10,7 @@
         %ul
           - if user_signed_in?
             - current_user.chatrooms.each do |chatroom|
-              %li
-                = link_to chatroom.name, "javascript:void(0)"
+              %li{id: "chatroom_link_#{chatroom.id}"}
+                = link_to chatroom_path(chatroom) do
+                  = chatroom.name
+                  %i.icon-circle{style: "display: none; color: #00CDCD"}
