@@ -1,7 +1,7 @@
 class SessionsController < Devise::SessionsController
   def create
-    cookies[:action_cable_id] = current_user.id
     super
+    cookies[:action_cable_id] = current_user.id
   end
 
   def destroy
