@@ -1,0 +1,4 @@
+%a.list-group-item{:href => "#"}
+  %b= message.user.name
+  (#{message.created_at.strftime('%l:%M %p')} ):
+  = message.body
