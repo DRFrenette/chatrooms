@@ -7,6 +7,10 @@
     .postcontent.nobottommargin.clearfix
       .messages.list-group[@chatroom]
         - @messages.each do |message|
+          - if !@unread_messages && @chatroom_membership.last_read_at < message.created_at
+            - @unread_messages = true
+            .divider.divider-short.divider-center
+              %i.icon-crop
           = render message
 
 
