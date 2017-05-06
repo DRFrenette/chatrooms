@@ -15,7 +15,7 @@
 
 
 %footer#footer{style: "z-index: 100000"}
-  = simple_form_for [@chatroom, @message], remote: true do |f|
+  = simple_form_for [@chatroom, @message] do |f|
     = f.input :body, input_html: { class: 'form-control nobottommargin' },
       label: false, as: :string,
       placeholder: 'Type & Hit Enter...', autofocus: true
