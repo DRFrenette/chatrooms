@@ -14,3 +14,23 @@
                 = link_to chatroom_path(chatroom) do
                   = chatroom.name
                   %i.icon-circle{style: "display: none; color: #00CDCD"}
+            .divider
+              %i.icon-circle
+            %li
+              = link_to "Get Notifications", "#notifications-modal", 
+                data: { lightbox: "inline" }
+          - else
+            %li Sign In To Join Chatrooms
+
+#notifications-modal.modal1.mfp-hide
+  .block.divcenter{style: "background-color: #FFF; max-width: 500px;"}
+    .center{style: "padding: 50px;"}
+      %h3 Enable Browswer Notifications Here!
+      %p.nobottommargin
+        Enable browser notifications to be notified whenever someone in your
+        chatroom sends a message while you're browsing on another tab!
+    .section.center.nomargin{:style => "padding: 30px;"}
+      = link_to "Get Notifications", "#", id: "notifications-trigger",
+        class: "button"
+      = link_to "Close", "#", id: "close-notifications-modal", class: "button"
+
