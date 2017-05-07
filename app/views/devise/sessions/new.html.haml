@@ -1,17 +1,72 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%section#content
+  .content-wrap.nopadding
+    .section.nopadding.nomargin{style: "width: 100%; height: 100%; position: absolute; left: 0; background: #444;"}
+    .section.nobg.full-screen.nopadding.nomargin
+      .container.vertical-middle.divcenter.clearfix
+        .row.center
+          %a{:href => "index.html"}
+            %img{:alt => "Canvas Logo", :src => "images/logo-dark.png"}/
+
+        .tabs.divcenter.nobottommargin.clearfix{:style => "max-width: 500px;"}
+          .tab-container
+            #tab-login.tab-content.clearfix
+              .panel.panel-default.divcenter.noradius.noborder{style: "max-width: 400px;"}
+                .panel-body{style: "padding: 40px;"}
+                  = form_for resource, as: resource_name, url: session_path(resource_name),
+                    class: 'nobottommargin'do |f|
+                    = devise_error_messages!
+                    %h3 Login to your Account
+                    .col_full
+                      %label Email:
+                      = f.email_field :email, autofocus: true, class: "form-control not-dark"
+                    .col_full
+                      %label Password:
+                      = f.password_field :password, autocomplete: "off",
+                        class: "form-control not-dark"
+                    - if devise_mapping.rememberable?
+                      .field.bottommargin
+                        = f.check_box :remember_me
+                        = f.label :remember_me
+                    .col_full.nobottommargin
+                      = f.submit "Login", class: "button button-3d button-black nomargin"
+                      = render "devise/shared/links"
+
+            #tab-register.tab-content.clearfix
+              .panel.panel-default.divcenter.noradius.noborder{style: "max-width: 800px;"}
+                .panel-body{style: "padding: 40px;"}
+                  = form_for resource, as: resource_name, url: registration_path(resource_name),
+                    class: 'nobottommargin'do |f|
+                    = devise_error_messages!
+                    %h3 Sign Up for an Account
+                    .col_half
+                      %label Username:
+                      = f.text_field :name, autofocus: true,
+                        class: "form-control not-dark"
+                    .col_half.col_last
+                      %label Email:
+                      = f.email_field :email, autofocus: true, 
+                        class: "form-control not-dark"
+                    .col_half
+                      %label Password:
+                      = f.password_field :password, autocomplete: "off",
+                        class: "form-control not-dark"
+                      - if @minimum_password_length
+                        %em
+                          (#{@minimum_password_length} characters minimum)
+                    .col_half.col_last
+                      %label Confirm Password:
+                      = f.password_field :password_confirmation, 
+                        autocomplete: "off", class: "form-control not-dark"
+                    - if devise_mapping.rememberable?
+                      .field.bottommargin
+                        = f.check_box :remember_me
+                        = f.label :remember_me
+                    .col_full.nobottommargin
+                      = f.submit "Sign Up", class: "button button-3d button-black nomargin"
+                      = render "devise/shared/links"
+
+          %ul.tab-nav.tab-nav2.center.clearfix
+            %li.inline-block
+              = link_to "Login", "#tab-login"
+            %li.inline-block
+              = link_to "Register", "#tab-register"
