@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function() {
+Chatrooms.Views.Chatroom = function() {
   $(document).on("click", function() {
     var $divider = $(".divider")
 
@@ -25,4 +25,4 @@ $(document).on("turbolinks:load", function() {
     $chatInput.val("");
     App.chatrooms.send_message(chatroom_id, message_body);
   });
-});
+};

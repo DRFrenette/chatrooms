@@ -16,6 +16,7 @@
 //= require plugins
 //= require cable
 //= require notifications
+//= require dans_awesome_groupchat_app
 //
 //= require plugins/jquery.swiper
 //
