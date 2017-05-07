@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
   after_action :authorize_chatroom, only: [:new, :create, :show]
 
   def index
-    @chatrooms = Chatroom.all
+    @chatrooms = Chatroom.all.order(name: :asc)
     authorize @chatrooms
   end
 
