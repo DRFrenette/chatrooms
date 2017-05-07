@@ -29,6 +29,7 @@ end
 
 group :development do
   gem 'awesome_print'
+  gem 'bullet'
   gem 'erb2haml'
   gem 'listen', '~> 3.0.5'
   gem 'pry'
