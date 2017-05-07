@@ -4,14 +4,11 @@
       #primary-menu-trigger
         %i.icon-reorder
       #logo
-        -# %a.standard-logo{"data-dark-logo" => "images/logo-dark.png", :href => "index.html"}
-        -#   %img{:alt => "Canvas Logo", :src => "images/logo.png"}/
-        -# %a.retina-logo{"data-dark-logo" => "images/logo-dark@2x.png", :href => "index.html"}
-        -#   %img{:alt => "Canvas Logo", :src => "images/logo@2x.png"}/
+        = link_to chatrooms_path, class: "retina-logo standard-logo" do
+          = image_tag "logo.jpg"
+
       %nav#primary-menu.dark
         %ul
-          %li
-            = link_to "Home", chatrooms_path
           %li
             - if user_signed_in?
               = link_to "Sign Out", destroy_user_session_path, method: :delete
