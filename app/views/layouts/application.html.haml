@@ -7,8 +7,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body.no-transition.stretched.side-panel-left.sticky-footer
-    = render partial: "shared/side_panel"
-    = render partial: "shared/header"
+    - if user_signed_in?
+      = render partial: "layouts/side_panel"
+      = render partial: "layouts/header"
     #wrapper.clearfix
       = yield
     #gotoTop.icon-angle-up.bottommargin
