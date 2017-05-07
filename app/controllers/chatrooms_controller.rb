@@ -1,6 +1,9 @@
 class ChatroomsController < ApplicationController
+  after_action :authorize_chatroom, only: [:new, :create, :show]
+
   def index
     @chatrooms = Chatroom.all
+    authorize @chatrooms
   end
 
   def new
@@ -29,6 +32,10 @@ class ChatroomsController < ApplicationController
   end
 
   private
+
+  def authorize_chatroom
+    authorize @chatroom
+  end
 
   def chatroom_params
     params.require(:chatroom).permit(:name)
