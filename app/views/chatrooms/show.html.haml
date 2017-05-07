@@ -19,3 +19,8 @@
     = f.input :body, input_html: { class: 'form-control nobottommargin' },
       label: false, as: :string,
       placeholder: 'Type & Hit Enter...', autofocus: true
+
+:javascript
+  $(document).on("turbolinks:load", function() {
+    new Chatrooms.Views.Chatroom
+  });
