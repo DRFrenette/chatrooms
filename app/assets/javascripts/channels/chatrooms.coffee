@@ -8,7 +8,7 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
   received: (data) ->
     active_chatroom = $(".messages#chatroom_#{data.chatroom_id}")
 
-    message_html = "<a class='list-group-item' href='#'>" + 
+    message_html = "<a class='list-group-item' href='javascript:void(0)'>" + 
     "<b>#{data.message.sender}</b>" +
     " (#{data.message.timestamp} ): #{data.message.body}"
 
