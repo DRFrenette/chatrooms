@@ -17,9 +17,6 @@
 //= require notifications
 //= require dans_awesome_groupchat_app
 //
-//= require jquery.magnific
-//= require jquery.swiper
-//= require jquery.tabs
-//
-//= require_tree ./views
 //= require_tree ./channels
+//= require_tree ./plugins
+//= require_tree ./views
