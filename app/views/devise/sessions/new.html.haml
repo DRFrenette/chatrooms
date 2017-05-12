@@ -70,3 +70,11 @@
               = link_to "Yes", "#tab-login"
             %li.inline-block
               = link_to "No", "#tab-register"
+
+:javascript
+  $(function() {
+    $('#user_remember_me').bootstrapSwitch({
+      onText:  "Yes",
+      offText: "No"
+    });
+  });
