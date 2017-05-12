@@ -5,8 +5,25 @@
         .panel-body{style: "padding: 40px;"}
           = simple_form_for @chatroom, html: { class: "nobottommargin" } do |f|
             %h3 Create a New Chatroom
-            .col_full
+            .col_two_third
+              %label Name
               = f.input :name, label: false,
                 input_html: { class: "form-control", placeholder: "Name" }
+            .col_one_third.col_last
+              %label Private?
+              = f.input :private_channel, as: :boolean, label: false
+            .col_full
+              %label Invite Your Friends!
+              = f.input :user_ids, collection: @users,
+                input_html: { class: "form-control", multiple: true },
+                include_blank: "Invite Users", label: false
             .col_full.nobottommargin
               = f.submit class: "button button-3d button-black nomargin"
+:javascript
+  $(document).on("turbolinks:load", function() {
+    $("#chatroom_user_ids").select2();
+    $('#chatroom_private_channel').bootstrapSwitch({
+      onText:  "Yes",
+      offText: "No"
+    });
+  });

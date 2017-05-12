@@ -24,7 +24,7 @@ class ChatroomsController < ApplicationController
 
   def show
     @chatroom = Chatroom.find(params[:id])
-    @chatroom_user = current_user.chatroom_users.find_by(chatroom_id: @chatroom.id)
+    @chatroom_membership = current_user.chatroom_memberships.find_by(chatroom_id: @chatroom.id)
     @message = Message.new
     @messages = @chatroom.messages.includes(:user).order(created_at: :desc).
       limit(100).reverse
