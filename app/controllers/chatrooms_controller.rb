@@ -2,12 +2,13 @@ class ChatroomsController < ApplicationController
   after_action :authorize_chatroom, only: [:new, :create, :show]
 
   def index
-    @chatrooms = Chatroom.all.order(name: :asc)
-    authorize @chatrooms
+    @public_chatrooms = Chatroom.public_channel.order(name: :asc)
+    authorize @public_chatrooms
   end
 
   def new
     @chatroom = Chatroom.new
+    @users = User.all.without(current_user)
   end
 
   def create
@@ -15,6 +16,7 @@ class ChatroomsController < ApplicationController
 
     if @chatroom.valid?
       @chatroom.save!
+      @chatroom.users << current_user
       flash.notice = "Chatrooms created."
       redirect_to chatrooms_path
     else
@@ -38,6 +40,6 @@ class ChatroomsController < ApplicationController
   end
 
   def chatroom_params
-    params.require(:chatroom).permit(:name)
+    params.require(:chatroom).permit(:name, :private_channel, user_ids: [])
   end
 end

@@ -5,22 +5,42 @@
       %i.icon-line-cross
   .side-panel-wrap
     .widget.clearfix
-      %h4 Your Chatrooms
-      %nav.nav-tree.nobottommargin
-        %ul
-          - if user_signed_in?
+      - if user_signed_in?
+        %h4 Your Chatrooms
+        %nav.nav-tree.nobottommargin
+          %ul
             - current_user.chatrooms.each do |chatroom|
               %li{id: "chatroom_link_#{chatroom.id}"}
                 = link_to chatroom_path(chatroom) do
-                  = chatroom.name
+                  = truncate(chatroom.name, length: 17)
                   %i.icon-circle{style: "display: none; color: #00CDCD"}
-            .divider
-              %i.icon-circle
+
+        .divider
+          %i.icon-circle
+
+        %h4 Invitations
+        %nav.nav-tree.nobottommargin
+          %ul
+            - current_user.invited_chatrooms.each do |chatroom|
+              %li
+                = link_to "javascript:void(0)" do
+                  = truncate(chatroom.name, length: 17)
+                = link_to accept_chatroom_chatroom_memberships_path(chatroom), method: :post do
+                  %i.icon-line-plus
+                = link_to chatroom_chatroom_memberships_path(chatroom), method: :delete do
+                  %i.icon-line-cross
+
+        .divider
+          %i.icon-circle
+
+        %h4 Settings
+        %nav.nav-tree.nobottommargin
+          %ul
             %li
               = link_to "Get Notifications", "#notifications-modal", 
                 data: { lightbox: "inline" }
-          - else
-            %li Sign In To Join Chatrooms
+      - else
+        %h4 Sign in to join chatrooms
 
 #notifications-modal.modal1.mfp-hide
   .block.divcenter{style: "background-color: #FFF; max-width: 500px;"}

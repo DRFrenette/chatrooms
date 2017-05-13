@@ -11,7 +11,7 @@
               %i.icon-comments-alt
           %h3 Chatrooms
           %ul.nobottommargin
-            - @chatrooms.each do |chatroom|
+            - @public_chatrooms.each do |chatroom|
               %li{style: "list-style-type: none;"}
                 = chatroom.name
                 = join_or_leave_link(current_user, chatroom)

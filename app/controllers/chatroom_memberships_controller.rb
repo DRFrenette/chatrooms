@@ -1,6 +1,13 @@
 class ChatroomMembershipsController < ApplicationController
   def create
-    @chatroom_membership = chatroom.chatroom_memberships.find_or_create_by(user_id: current_user.id)
+    @chatroom_membership = chatroom.chatroom_memberships.
+      find_or_create_by(user_id: current_user.id, state: "accepted")
+    redirect_to chatroom
+  end
+
+  def accept
+    @chatroom_membership = chatroom.chatroom_memberships.
+      find_or_create_by(user_id: current_user.id).accept_membership
     redirect_to chatroom
   end
 
