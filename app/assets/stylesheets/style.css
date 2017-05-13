@@ -12289,7 +12289,7 @@ body:not(.device-touch) .tagcloud a {
 .nav-tree li { position: relative; }
 
 .nav-tree li a {
-	display: block;
+	display: inline-block;
 	padding: 8px 0;
 	color: #333;
 	text-transform: uppercase;
@@ -12303,6 +12303,12 @@ body:not(.device-touch) .tagcloud a {
 	font-size: 14px;
 	width: 16px;
 	text-align: center;
+}
+
+.nav-tree li a i {
+  color: #00CDCD;
+  margin-right: 0px !important;
+	display: inline-block;
 }
 
 .nav-tree li i:not(.icon-angle-down) {

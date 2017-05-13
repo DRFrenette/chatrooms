@@ -14,14 +14,16 @@
               = f.input :private_channel, as: :boolean, label: false
             .col_full
               %label Invite Your Friends!
-              = f.input :user_ids, collection: @users,
-                input_html: { class: "form-control", multiple: true },
-                include_blank: "Invite Users", label: false
+              = f.input :user_ids, collection: @users, label: false,
+                input_html: { class: "form-control", multiple: true }
             .col_full.nobottommargin
               = f.submit class: "button button-3d button-black nomargin"
 :javascript
   $(document).on("turbolinks:load", function() {
-    $("#chatroom_user_ids").select2();
+    $("#chatroom_user_ids").select2({
+    placeholder: "Invite Users"
+    });
+
     $('#chatroom_private_channel').bootstrapSwitch({
       onText:  "Yes",
       offText: "No"
