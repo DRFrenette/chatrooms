@@ -8,6 +8,7 @@ end
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'obscenity'
 gem 'haml-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
