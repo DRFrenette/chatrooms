@@ -12,10 +12,21 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
     "<b>#{data.message.sender}</b>" +
     " (#{data.message.timestamp} ): #{data.message.body}"
 
+    divider = "<div class='divider divider-short divider-center'>" +
+    "<i class='icon-crop'></i></div>"
+
     if active_chatroom.length > 0
+      if document.hidden
+        if $('.divider').length == 0
+          active_chatroom.append(divider)
+
+        if Notification.permission == "granted"
+          new Notification(data.message.sender, body: data.message.body)
+
+      else
+        App.last_read.update(data.chatroom_id)
+
       active_chatroom.append(message_html)
 
-      if document.hidden && Notification.permission == "granted"
-        new Notification(data.message.sender, body: data.message.body)
     else
       $("i", "#chatroom_link_#{data.chatroom_id}").show()
