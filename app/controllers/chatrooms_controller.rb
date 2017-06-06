@@ -25,15 +25,18 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatroom = Chatroom.find(params[:id])
-    @chatroom_membership = current_user.chatroom_memberships.find_by(chatroom_id: @chatroom.id)
+    @chatroom_membership = current_user.chatroom_memberships.find_by(chatroom_id: chatroom.id)
     @message = Message.new
-    @messages = @chatroom.messages.includes(:user).order(created_at: :desc).
+    @messages = chatroom.messages.includes(:user).order(created_at: :desc).
       limit(100).reverse
     @unread_messages = false
   end
 
   private
+
+  def chatroom
+    @chatroom ||= Chatroom.friendly.find(params[:id])
+  end
 
   def authorize_chatroom
     authorize @chatroom
