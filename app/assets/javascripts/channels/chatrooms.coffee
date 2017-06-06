@@ -27,10 +27,10 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
         App.last_read.update(data.chatroom_id)
 
       active_chatroom.append(message_html)
+      window.scrollTo(0,document.body.scrollHeight);
 
     else
       $("i", "#chatroom_link_#{data.chatroom_id}").show()
 
   send_message: (chatroom_id, message) ->
     @perform "send_message", {chatroom_id: chatroom_id, body: message}
-
