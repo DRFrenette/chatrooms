@@ -1,6 +1,6 @@
 Chatrooms.Views.Chatroom = function() {
   $(document).on("click", function() {
-    var $divider = $(".divider")
+    var $divider = $("#last-read-div");
 
     if ($divider.length > 0) {
       var chatroom_id =  $("#chatroom").attr("data-chatroom-id");
