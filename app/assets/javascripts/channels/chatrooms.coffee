@@ -8,12 +8,15 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
   received: (data) ->
     active_chatroom = $("#chatroom[data-chatroom-id='#{data.chatroom_id}']")
 
-    message_html = "<a class='list-group-item' href='javascript:void(0)'>" + 
-    "<b>#{data.message.sender}</b>" +
-    " (#{data.message.timestamp} ): #{data.message.body}"
+    message_html = "<div class='message'>
+                      <div class='username'>#{data.message.sender}</div>
+                      <p>#{data.message.body}</p>
+                      <div class='details'>#{data.message.timestamp}</div>
+                    </div>"
 
-    divider = "<div id='last-read-div' class='divider divider-short divider-center'>" +
-    "<i class='icon-crop'></i></div>"
+    divider = "<div id='last-read-div' class='divider divider-short divider-center'>
+                 <i class='icon-crop'></i>
+               </div>"
 
     if active_chatroom.length > 0
       if document.hidden

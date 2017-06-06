@@ -1,4 +1,6 @@
-%a.list-group-item{href: "javascript:void(0);"}
-  %b= message.user.name
-  (#{message.created_at.strftime('%l:%M %p')} ):
-  = message.body
+.message
+  .username= message.user.name
+
+  %p= message.body
+  .details
+    = message.created_at.strftime('%l:%M %p')
