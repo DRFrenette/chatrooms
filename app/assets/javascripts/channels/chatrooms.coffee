@@ -12,7 +12,7 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
     "<b>#{data.message.sender}</b>" +
     " (#{data.message.timestamp} ): #{data.message.body}"
 
-    divider = "<div class='divider divider-short divider-center'>" +
+    divider = "<div id='last-read-div' class='divider divider-short divider-center'>" +
     "<i class='icon-crop'></i></div>"
 
     if active_chatroom.length > 0
