@@ -18,20 +18,21 @@
         .divider
           %i.icon-circle
 
-        %h4 Invitations
-        %nav.nav-tree.nobottommargin
-          %ul
-            - current_user.invited_chatrooms.each do |chatroom|
-              %li
-                = link_to "javascript:void(0)" do
-                  = truncate(chatroom.name, length: 17)
-                = link_to accept_chatroom_chatroom_memberships_path(chatroom), method: :post do
-                  %i.icon-line-plus
-                = link_to chatroom_chatroom_memberships_path(chatroom), method: :delete do
-                  %i.icon-line-cross
+        - if current_user.invited_chatrooms.any?
+          %h4 Invitations
+          %nav.nav-tree.nobottommargin
+            %ul
+              - current_user.invited_chatrooms.each do |chatroom|
+                %li
+                  = link_to "javascript:void(0)" do
+                    = truncate(chatroom.name, length: 17)
+                  = link_to accept_chatroom_chatroom_memberships_path(chatroom), method: :post do
+                    %i.icon-line-plus
+                  = link_to chatroom_chatroom_memberships_path(chatroom), method: :delete do
+                    %i.icon-line-cross
 
-        .divider
-          %i.icon-circle
+          .divider
+            %i.icon-circle
 
         %h4 Settings
         %nav.nav-tree.nobottommargin
