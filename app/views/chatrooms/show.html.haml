@@ -5,7 +5,7 @@
 
   .content-wrap
     .postcontent.nobottommargin.clearfix
-      .messages.list-group[@chatroom]
+      #chatroom.messages.list-group{"data-chatroom-id" => @chatroom.id}
         - @messages.each do |message|
           - if !@unread_messages && @chatroom_membership.last_read_at < message.created_at
             - @unread_messages = true

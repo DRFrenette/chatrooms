@@ -6,7 +6,7 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    active_chatroom = $(".messages#chatroom_#{data.chatroom_id}")
+    active_chatroom = $("#chatroom[data-chatroom-id='#{data.chatroom_id}']")
 
     message_html = "<a class='list-group-item' href='javascript:void(0)'>" + 
     "<b>#{data.message.sender}</b>" +

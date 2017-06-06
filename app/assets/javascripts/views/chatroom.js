@@ -3,7 +3,7 @@ Chatrooms.Views.Chatroom = function() {
     var $divider = $(".divider")
 
     if ($divider.length > 0) {
-      chatroom_id = $(".messages").attr("id").match(/\d+/);
+      let chatroom_id =  $("#chatroom").attr("data-chatroom-id");
       App.last_read.update(chatroom_id);
       $divider.remove();
     };
@@ -19,9 +19,9 @@ Chatrooms.Views.Chatroom = function() {
 
   $("#new_message").submit(function(e) {
     e.preventDefault();
-    var $chatInput = $("#message_body")
-    var chatroom_id =  $(".messages").attr("id").match(/\d+/)[0];
-    var message_body = $chatInput.val();
+    let $chatInput = $("#message_body")
+    let chatroom_id =  $("#chatroom").attr("data-chatroom-id");
+    let message_body = $chatInput.val();
     $chatInput.val("");
     App.chatrooms.send_message(chatroom_id, message_body);
   });
