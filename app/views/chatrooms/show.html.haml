@@ -4,14 +4,14 @@
       %h1= @chatroom.name
 
   .content-wrap
-    .postcontent.nobottommargin.clearfix
+    .nobottommargin.clearfix
       #chatroom.messages.list-group{"data-chatroom-id" => @chatroom.id}
         - @messages.each do |message|
           - if !@unread_messages && @chatroom_membership.last_read_at < message.created_at
             - @unread_messages = true
             .divider.divider-short.divider-center
               %i.icon-crop
-          = render message
+          = render partial: message, locals: { message_user: message.user }
 
 
 %footer#footer{style: "z-index: 100000"}

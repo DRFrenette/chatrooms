@@ -1,22 +1,28 @@
 .message {
-    background: none repeat scroll 0 0 #383838;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: none;
-    margin: 10px 0px 5px 1em;
+    margin: 0px 1em 0px 1em;
     padding: 13px;
     transition: all 0.3s ease-in-out;
 }
+.someone_elses_message {
+  background: none repeat scroll 0 0 #383838;
+};
+.your_message {
+  background: none repeat scroll 0 0 #00CDCD;
+};
 .message .details {
   font-size: 12px;
   text-align: right;
   line-height: 1.4em;
   color: #ffffff;
 }
-.message p, .message a {
+.message .body {
   font-size: 16px;
   line-height: 1.4em;
   color: #ffffff;
 }
+.message a {}
 .message .username { 
   font-size: 16px;
   font-weight: bold;

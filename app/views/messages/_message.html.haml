@@ -1,6 +1,15 @@
-.message
-  .username= message.user.name
+- if message_user == current_user
+  .col_one_third
+  .col_two_third.col_last
+    .message.your_message
+      .username= message.user.name
 
-  %p= message.body
-  .details
-    = message.created_at.strftime('%l:%M %p')
+      .body= message.body
+      .details= message.created_at.strftime('%l:%M %p')
+- else
+  .col_two_third
+    .message.someone_elses_message
+      .username= message.user.name
+
+      .body= message.body
+      .details= message.created_at.strftime('%l:%M %p')
