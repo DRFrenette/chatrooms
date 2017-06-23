@@ -5,8 +5,11 @@ class MessageRelayJob < ApplicationJob
     ActionCable.server.broadcast("chatrooms:#{message.chatroom_id}", {
                                  message: {
                                    body: message.body,
-                                   sender: message.user.name,
                                    timestamp: message.created_at.strftime("%l:%M %p")
+                                 },
+                                 sender: {
+                                   name: message.user.name,
+                                   id: message.user.id
                                  },
                                  chatroom_id: message.chatroom_id
     })

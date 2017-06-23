@@ -7,12 +7,27 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
 
   received: (data) ->
     active_chatroom = $("#chatroom[data-chatroom-id='#{data.chatroom_id}']")
+    current_user_id = $("#signed-in-as").attr("data-current-user-id")
 
-    message_html = "<div class='message'>
-                      <div class='username'>#{data.message.sender}</div>
-                      <p>#{data.message.body}</p>
-                      <div class='details'>#{data.message.timestamp}</div>
-                    </div>"
+    if `current_user_id == data.sender.id`
+      message_html = "<div class='col_one_third'></div>" +
+      "<div class='col_two_third col_last'>
+        <div class='message your_message'>
+          <div class='username'>#{data.sender.name}</div>
+
+          <div class='body'>#{data.message.body}</div>
+          <div class='details'>#{data.message.timestamp}</div>
+        </div>
+      </div>"
+    else
+      message_html = "<div class='col_two_third'>
+                        <div class='message someone_elses_message'>
+                          <div class='username'>#{data.sender.name}</div>
+
+                          <div class='body'>#{data.message.body}</div>
+                          <div class='details'>#{data.message.timestamp}</div>
+                        </div>
+                      </div>"
 
     divider = "<div id='last-read-div' class='divider divider-short divider-center'>
                  <i class='icon-crop'></i>
