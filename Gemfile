@@ -34,6 +34,7 @@ group :development, :test do
   gem "bullet"
   gem "byebug", platform: :mri
   gem "erb2haml"
+  gem 'pry'
   gem "spring"
 end
 
@@ -42,7 +43,6 @@ group :development do
   gem 'bullet'
   gem 'erb2haml'
   gem 'listen', '~> 3.0.5'
-  gem 'pry'
   gem 'web-console', '>= 3.3.0'
 end
 

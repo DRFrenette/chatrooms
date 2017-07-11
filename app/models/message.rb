@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  require 'obscenity/active_model'
+  require "obscenity/active_model"
 
   belongs_to :chatroom
   belongs_to :user

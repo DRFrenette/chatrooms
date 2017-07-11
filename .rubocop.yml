@@ -29,3 +29,6 @@ Style/StringLiterals:
   Enabled: true
   Exclude:
     - 'Gemfile'
+
+Layout/DotPosition:
+    EnforcedStyle: trailing

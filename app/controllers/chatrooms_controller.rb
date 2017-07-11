@@ -28,7 +28,7 @@ class ChatroomsController < ApplicationController
     @chatroom_membership = current_user.chatroom_memberships.find_by(chatroom_id: chatroom.id)
     @message = Message.new
     @messages = chatroom.messages.includes(:user).order(created_at: :desc).
-      limit(100).reverse
+                limit(100).reverse
     @unread_messages = false
   end
 
