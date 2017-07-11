@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+ruby '2.3.4'
+
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
@@ -26,7 +28,13 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem "awesome_print"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "bullet"
+  gem "byebug", platform: :mri
+  gem "erb2haml"
+  gem "spring"
 end
 
 group :development do
@@ -36,6 +44,22 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'pry'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem "capybara"
+  gem "database_cleaner"
+  gem "factory_girl_rails"
+  gem "fuubar"
+  gem "launchy"
+  gem "poltergeist"
+  gem "rr"
+  gem "rspec"
+  gem "rspec-its"
+  gem "rspec-rails"
+  gem "shoulda-matchers", "~> 2.0"
+  gem "webmock", require: false
+  gem "wrong", github: "sconover/wrong"
 end
 
 group :production do
