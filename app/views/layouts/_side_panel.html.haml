@@ -7,7 +7,7 @@
     .widget.clearfix
       - if user_signed_in?
         %h4 Your Chatrooms
-        %nav.nav-tree.nobottommargin
+        %nav#current-chatrooms.nav-tree.nobottommargin
           %ul
             - current_user.chatrooms.each do |chatroom|
               %li{id: "chatroom_link_#{chatroom.id}"}
@@ -20,7 +20,7 @@
 
         - if current_user.invited_chatrooms.any?
           %h4 Invitations
-          %nav.nav-tree.nobottommargin
+          %nav#chatroom-invites.nav-tree.nobottommargin
             %ul
               - current_user.invited_chatrooms.each do |chatroom|
                 %li
@@ -35,7 +35,7 @@
             %i.icon-circle
 
         %h4 Settings
-        %nav.nav-tree.nobottommargin
+        %nav#settings.nav-tree.nobottommargin
           %ul
             %li
               = link_to "Get Notifications", "#notifications-modal", 

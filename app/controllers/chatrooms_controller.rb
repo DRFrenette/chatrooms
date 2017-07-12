@@ -16,7 +16,7 @@ class ChatroomsController < ApplicationController
 
     if @chatroom.valid?
       @chatroom.save!
-      @chatroom.users << current_user
+      add_current_user_to_chatroom(@chatroom)
       flash.notice = "Chatrooms created."
       redirect_to chatrooms_path
     else
@@ -38,11 +38,15 @@ class ChatroomsController < ApplicationController
     @chatroom ||= Chatroom.friendly.find(params[:id])
   end
 
+  def chatroom_params
+    params.require(:chatroom).permit(:name, :private_channel, user_ids: [])
+  end
+
   def authorize_chatroom
     authorize @chatroom
   end
 
-  def chatroom_params
-    params.require(:chatroom).permit(:name, :private_channel, user_ids: [])
+  def add_current_user_to_chatroom(chatroom)
+    ChatroomMembership.create(chatroom: chatroom, user: current_user).accept_membership
   end
 end

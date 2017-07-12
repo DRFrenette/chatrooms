@@ -7,8 +7,7 @@
       .col_one_third.topmargin
         .feature-box.fbox-center.fbox-light.fbox-plain
           .fbox-icon
-            %a{:href => "#"}
-              %i.icon-comments-alt
+            %i.icon-comments-alt
           %h3 Chatrooms
           %ul.nobottommargin
             - @public_chatrooms.each do |chatroom|
@@ -17,7 +16,7 @@
                 = join_or_leave_link(current_user, chatroom)
       .col_one_third.col_last.topmargin
         .feature-box.fbox-center.fbox-light.fbox-plain
-          .fbox-icon
-            = link_to new_chatroom_path do
+          = link_to new_chatroom_path do
+            .fbox-icon
               %i.icon-plus
-          %h3 Start a New Chat
+            %h3 Start a New Chat
