@@ -1,24 +1,18 @@
-# README
+# Dan's  Awesome Chat App!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Overview
 
-Things you may want to cover:
+A simple Chat App using ActionCable for real time messages. You can observe this
+by visiting the app and creating two accounts, one of them in a
+private/incognito browsing window, creating a chatroom (preferably a private
+one) and messaging the other one.
 
-* Ruby version
+Support for browser notifications is also included
 
-* System dependencies
+### Technologies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby 2.3.4
+- Rails 5.0.2
+- Turbolinks
+- ActionCable
+- Hosted on Heroku
