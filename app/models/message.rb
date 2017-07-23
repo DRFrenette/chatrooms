@@ -4,12 +4,14 @@ class Message < ApplicationRecord
   belongs_to :chatroom
   belongs_to :user
 
-  validates :body, presence: true
+  validates_presence_of :body, :chatroom, :user
   validates :body, obscenity: { sanitize: true }, if: :public_message?
 
   private
 
   def public_message?
-    !chatroom.private_channel
+    if chatroom.present?
+      !chatroom.private_channel
+    end
   end
 end
